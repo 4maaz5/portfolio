@@ -131,7 +131,7 @@
 
             Through business analysis and requirement gathering, I ensure every project aligns with strategic
             objectives—whether optimizing hotel revenue through occupancy analytics or streamlining educational
-            administration with automated reporting. My technical toolkit includes PHP/Laravel, Next.js, React, Python,
+            administration with automated reporting. My technical toolkit includes PHP/Laravel, Next.js, Python,
             MySQL, and Power BI, complemented by experience with Saudi payment gateways (Moyasar) and regulatory
             compliance (ZATCA).</p>
         </div><br>
@@ -403,10 +403,12 @@
 
             <div class="resume-item">
               <h4>PHP Laravel Projects</h4>
-              <h5>2022 - 2024</h5>
-              <p><em>2 Years of Working Experience in PHP Laravel</em></p>
-              I have worked on numerous FullStack projects, such as <strong><a
-                  href="https://livestock.wakeupict.com/home">Agris</a></strong>,
+              <h5>2021 - 2024</h5>
+              <!-- <p><em>2 Years of Working Experience in PHP Laravel</em></p> -->
+              I have worked on numerous FullStack projects, such as <strong><a href="https://drbz.net/home">Hotel
+                  Management</a></strong>,
+              <strong><a href="https://b-it.co/en/portfolio">School Management</a></strong>,
+              <strong><a href="https://livestock.wakeupict.com/home">Agris</a></strong>,
               <strong><a href="http://backend.multifeedinventory.com/login"> MFI </a></strong>,
               <!-- <strong> <a href="#">MedEasy</a></strong>, -->
               <strong><a href="#">Job Portal</a></strong> and a
@@ -419,13 +421,12 @@
               <h4>Data Analyst</h4>
               <h5>2024-2025</h5>
               <!-- <p><em>Freelancing</em></p> -->
-              <p>I specialize in data analysis and business intelligence, developing automated financial and operational
-                reports using Python and Power BI that saved over 15 hours weekly in manual reporting while
-                significantly enhancing management visibility into key performance indicators. Through the creation of
-                interactive Power BI dashboards utilizing DAX measures and advanced visualization techniques, I improved
-                data accessibility for senior stakeholders and enabled data-driven decision-making. Additionally, I
-                implemented robust data validation frameworks that reduced reporting errors by 35%, ensuring reliable
-                analytics for business planning, accountability reporting, and ongoing performance tracking.</p>
+              <p>I deliver data-driven insights through automated analytics solutions, leveraging Python for data
+                processing and Power BI for visualization to transform raw data into strategic intelligence. My work
+                includes developing automated reporting systems that save 15+ hours weekly, building interactive
+                dashboards with DAX calculations that enhance executive decision-making, and implementing data quality
+                frameworks that reduce reporting errors by 35%. This ensures stakeholders have reliable, actionable
+                insights for financial analysis, operational optimization, and performance tracking.</p>
             </div>
 
 
@@ -466,16 +467,22 @@
           <div class="row" data-aos="fade-up">
             <div class="col-lg-12 d-flex justify-content-center">
               <ul id="portfolio-flters">
-                <li data-filter=".filter-agris" class="filter-active">Agris</li>
-                <li data-filter=".filter-job-portal">MFI</li>
-                <li data-filter=".filter-Interloper">Job Portal</li>
-                <li data-filter=".filter-E-Commerce">E-Commerce Website</li>
-                <li data-filter=".filter-E-commerce Sales Analysis (DA)">E-commerce Sales Analysis (DA)</li>
-                <li data-filter=".filter-HR Analysis report">HR Analysis report (DA)</li>
-                <li data-filter=".filter-Amazon Sale Report">Hotel Booking Report (DA)</li>
-                <!-- <li data-filter=".filter-NetFlix Report">NetFlix Report (DA)</li> -->
+                <li data-filter="hotel">Hotel Management</li>
+                <li data-filter="school">School Management</li>
+                <li data-filter="agris">Agris</li>
+                <li data-filter="job-portal">Job Portal</li>
+                <li data-filter="mfi">MFI</li>
+                <li data-filter="ecommerce">E-Commerce Website</li>
+                <li data-filter="ecommerce-analysis">E-commerce Sales Analysis (DA)</li>
+                <li data-filter="hr-analysis">HR Analysis report (DA)</li>
+                <li data-filter="hotel-booking">Hotel Booking Report (DA)</li>
               </ul>
             </div>
+          </div>
+
+          <!-- Project Details Display Area -->
+          <div id="projectDetailChange">
+            <!-- Content will be inserted here by JavaScript -->
           </div>
 
 
@@ -586,7 +593,7 @@
       var grid = new Isotope(portfolioContainer, {
         itemSelector: '.portfolio-item',
         layoutMode: 'fitRows',
-        filter: '.filter-agris'
+        filter: '.filter-hotel'
       });
 
       var filterButtons = document.querySelectorAll("#portfolio-flters li");
@@ -608,7 +615,7 @@
     });
 
 
-    document.getElementById("projectDetailChange").innerHTML = projectContent = "<b></b> I worked on a Laravel-based web application named Agris, designed to streamline livestock management for farmers and agricultural businesses. The platform enables users to track animal records, health data, breeding cycles, and inventory, providing a centralized system for efficient farm operations. With an intuitive interface and robust backend, Agris supports better decision-making and enhances productivity in the livestock sector</b><br><br><center><a href='agris-details.html' class='btn btn-info btn-sm'>View Full Detail</a></center>";
+    document.getElementById("projectDetailChange").innerHTML = projectContent = "<b></b> I developed a comprehensive Hotel Management System using Laravel and Next.js, designed to optimize daily operations for hospitality businesses. The platform features real-time room booking management, employee document tracking with automated expiry notifications, and QR-code-based attendance systems. With integrated POS functionality and Moyasar payment processing, the system provides a complete solution for reservation handling, staff management, and financial transactions. The intuitive dashboard offers Power BI analytics for occupancy rates and revenue tracking, enabling data-driven decision-making to enhance guest experience and operational efficiency.</b><br><br><center><a href='hotel-management-details.html' class='btn btn-info btn-sm'>View Full Detail</a></center>";
 
     document.addEventListener("DOMContentLoaded", function () {
       const portfolioFilters = document.querySelectorAll("#portfolio-flters li");
@@ -616,56 +623,48 @@
 
       portfolioFilters.forEach(filter => {
         filter.addEventListener("click", function () {
-          const projectName = this.textContent;
+          // Get the data-filter value and extract the class name
+          const filterValue = this.getAttribute('data-filter');
+          // Extract just the class name after "filter-"
+          const projectType = filterValue.replace('filter-', '');
           let projectContent = "";
 
-          switch (projectName) {
+          switch (projectType) {
+            case "hotel":
+              projectContent = "<b>I developed a comprehensive Hotel Management System using Laravel and Next.js, designed to optimize daily operations for hospitality businesses. The platform features real-time room booking management, employee document tracking with automated expiry notifications, and QR-code-based attendance systems. With integrated POS functionality and Moyasar payment processing, the system provides a complete solution for reservation handling, staff management, and financial transactions. The intuitive dashboard offers Power BI analytics for occupancy rates and revenue tracking, enabling data-driven decision-making to enhance guest experience and operational efficiency.</b><br><br><center><a href='hotel-management-details.html' class='btn btn-info btn-sm'>View Full Detail</a></center>";
+              break;
+            case "school":
+              projectContent = "<b>I developed and maintained a comprehensive School Management SaaS using Laravel, serving multiple educational institutes in Saudi Arabia. The platform features student enrollment systems, attendance tracking, exam management, and fee processing with ZATCA-compliant e-invoicing. With companion mobile applications for iOS/Android, the system provides accessibility for administrators, teachers, students, and parents. The robust backend ensures secure data handling and role-based access, while the intuitive interface supports efficient academic administration and communication.</b><br><br><center><a href='school-management-details.html' class='btn btn-info btn-sm'>View Full Detail</a></center>";
+              break;
             case "agris":
-              projectContent = "<b></b>I worked on a Laravel-based web application named Agris, designed to streamline livestock management for farmers and agricultural businesses. The platform enables users to track animal records, health data, breeding cycles, and inventory, providing a centralized system for efficient farm operations. With an intuitive interface and robust backend, Agris supports better decision-making and enhances productivity in the livestock sector </b><br><br><br><center><a href='agris-details.html' class='btn btn-info btn-sm'>View Full Detail</a></center>";
+              projectContent = "<b>I worked on a Laravel-based web application named Agris, designed to streamline livestock management for farmers and agricultural businesses. The platform enables users to track animal records, health data, breeding cycles, and inventory, providing a centralized system for efficient farm operations. With an intuitive interface and robust backend, Agris supports better decision-making and enhances productivity in the livestock sector.</b><br><br><center><a href='agris-details.html' class='btn btn-info btn-sm'>View Full Detail</a></center>";
               break;
-
-            case "Job Portal":
-              projectContent = "<b></b>I developed a Job Portal web application that connects job seekers with employers through a streamlined and user-friendly platform. The system allows candidates to create profiles, upload resumes, and apply for jobs, while employers can post vacancies, manage applications, and filter candidates based on custom criteria. Built with Laravel, the portal features secure authentication, role-based access, and a responsive design to ensure accessibility across all devices.<br><br><br><center><a href='job-portal-details.html' class='btn btn-info btn-sm'>View Full Detail</a></center>";
+            case "job-portal":
+              projectContent = "<b>I developed a Job Portal web application that connects job seekers with employers through a streamlined and user-friendly platform. The system allows candidates to create profiles, upload resumes, and apply for jobs, while employers can post vacancies, manage applications, and filter candidates based on custom criteria. Built with Laravel, the portal features secure authentication, role-based access, and a responsive design to ensure accessibility across all devices.</b><br><br><center><a href='job-portal-details.html' class='btn btn-info btn-sm'>View Full Detail</a></center>";
               break;
-
-            case "MFI":
-              projectContent = "<b></b> I worked on MFI, an eCommerce inventory management website developed to help businesses efficiently handle their product stock, sales, and orders. The platform includes features such as real-time inventory tracking, product categorization, order processing, and user role management. Built with Laravel, MFI offers a reliable and scalable solution tailored for small to medium-sized retail operations.<br><br><br><center><a href='Interloper-details.html' class='btn btn-info btn-sm'>View Full Detail</a></center>";
+            case "mfi":
+              projectContent = "<b>I worked on MFI, an eCommerce inventory management website developed to help businesses efficiently handle their product stock, sales, and orders. The platform includes features such as real-time inventory tracking, product categorization, order processing, and user role management. Built with Laravel, MFI offers a reliable and scalable solution tailored for small to medium-sized retail operations.</b><br><br><center><a href='mfi-details.html' class='btn btn-info btn-sm'>View Full Detail</a></center>";
               break;
-
-
-            case "E-Commerce Website":
-              projectContent = "<b></b> I developed a fully functional eCommerce website designed to offer a seamless online shopping experience for customers. The platform includes features such as product browsing, shopping cart, secure checkout, order tracking, and customer account management. Built using Laravel, the website supports dynamic product listings, discount handling, and responsive design, ensuring smooth performance across all devices.<br><br><br><center><a href='E-Commerce-details.html' class='btn btn-info btn-sm'>View Full Detail</a></center>";
+            case "ecommerce":
+              projectContent = "<b>I developed a fully functional eCommerce website designed to offer a seamless online shopping experience for customers. The platform includes features such as product browsing, shopping cart, secure checkout, order tracking, and customer account management. Built using Laravel, the website supports dynamic product listings, discount handling, and responsive design, ensuring smooth performance across all devices.</b><br><br><center><a href='ecommerce-details.html' class='btn btn-info btn-sm'>View Full Detail</a></center>";
               break;
-
-
-
-            case "HR Analysis report (DA)":
-              projectContent = "<b></b> This HR analytics dashboard offers valuable insights into employee demographics, headcount trends, attrition rates, department-wise distribution. Built in Power BI, it enables HR teams to monitor workforce dynamics, identify turnover patterns, and support strategic talent planning with interactive visualizations and filters.<br><br><br><center><a href='hr-analysis.html' class='btn btn-info btn-sm'>View Full Detail</a></center>";
+            case "ecommerce-analysis":
+              projectContent = "<b>This interactive Power BI dashboard provides a comprehensive overview of e-commerce sales performance. It includes key metrics such as total revenue, sales by category, top-selling products, customer demographics, and monthly sales trends. The report enables data-driven decision-making by offering dynamic filtering, drill-downs, and visual insights into sales performance across different regions and time periods.</b><br><br><center><a href='ecommerce-analysis.html' class='btn btn-info btn-sm'>View Full Detail</a></center>";
               break;
-
-            case "E-commerce Sales Analysis (DA)":
-              projectContent = "<b></b>This interactive Power BI dashboard provides a comprehensive overview of e-commerce sales performance. It includes key metrics such as total revenue, sales by category, top-selling products, customer demographics, and monthly sales trends. The report enables data-driven decision-making by offering dynamic filtering, drill-downs, and visual insights into sales performance across different regions and time periods. <br><br><br><center><a href='ecommerce.html' class='btn btn-info btn-sm'>View Full Detail</a></center>";
+            case "hr-analysis":
+              projectContent = "<b>This HR analytics dashboard offers valuable insights into employee demographics, headcount trends, attrition rates, and department-wise distribution. Built in Power BI, it enables HR teams to monitor workforce dynamics, identify turnover patterns, and support strategic talent planning with interactive visualizations and filters.</b><br><br><center><a href='hr-analysis.html' class='btn btn-info btn-sm'>View Full Detail</a></center>";
               break;
-
-            case "Hotel Booking Report (DA)":
-              projectContent = "<b></b> This Power BI dashboard provides a detailed analysis of Hotel rooms booking, including total revenue, room booked, top-performing rooms. It helps track sales trends over time, monitor marketplace performance, and optimize product strategies with interactive charts and filters.<br><br><br><center><a href='amazon-sales.html' class='btn btn-info btn-sm'>View Full Detail</a></center>";
+            case "hotel-booking":
+              projectContent = "<b>This Power BI dashboard provides a detailed analysis of hotel room bookings, including total revenue, rooms booked, and top-performing room types. It helps track booking trends over time, monitor occupancy performance, and optimize pricing strategies with interactive charts and filters.</b><br><br><center><a href='hotel-booking.html' class='btn btn-info btn-sm'>View Full Detail</a></center>";
               break;
-
-            case "NetFlix Report (DA)":
-              projectContent = "<b></b> This Power BI dashboard explores Netflix viewing data, offering insights into content trends, user preferences, top-rated titles, and genre distribution. It highlights patterns in release years, country-wise content availability, and popularity metrics, enabling deep exploration of Netflix’s global catalog through interactive visuals and filters.<br><br><br><center><a href='netflix.html' class='btn btn-info btn-sm'>View Full Detail</a></center>";
-              break;
-
-
-
             default:
-              projectContent = "<b></b> I worked on a Laravel-based web application named Agris, designed to streamline livestock management for farmers and agricultural businesses. The platform enables users to track animal records, health data, breeding cycles, and inventory, providing a centralized system for efficient farm operations. With an intuitive interface and robust backend, Agris supports better decision-making and enhances productivity in the livestock sector<br><br><br><center><a href='agris-details.html' class='btn btn-info btn-sm'>View Full Detail</a></center>";
+              projectContent = "<b>Select a project to view details.</b><br><br><center><a href='#' class='btn btn-info btn-sm'>View All Projects</a></center>";
           }
 
           projectDetail.innerHTML = projectContent;
         });
       });
     });
-
 
   </script>
 
