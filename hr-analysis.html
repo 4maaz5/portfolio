@@ -40,17 +40,17 @@
   <!-- ======= Header ======= -->
   <header id="header">
     <div class="profile">
-      <h1 class="text-light"><a href="index.html">Maaz Ahmad</a></h1>
+      <h1 class="text-light"><a href="index.html" data-i18n="name-value">Maaz Ahmad</a></h1>
     </div>
 
     <nav id="navbar" class="nav-menu navbar">
       <ul>
-        <li><a href="index.html#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-        <li><a href="index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-        <li><a href="index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+        <li><a href="index.html#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span data-i18n="nav-home">Home</span></a></li>
+        <li><a href="index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span data-i18n="nav-about">About</span></a></li>
+        <li><a href="index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span data-i18n="nav-resume">Resume</span></a></li>
         <li><a href="index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i>
-            <span>Portfolio</span></a></li>
-        <li><a href="index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+            <span data-i18n="nav-portfolio">Portfolio</span></a></li>
+        <li><a href="index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span data-i18n="nav-contact">Contact</span></a></li>
       </ul>
       <div class="mobile-lang">
         <a href="#" class="lang-active">EN</a>
@@ -73,10 +73,10 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Project Details</h2>
+          <h2 data-i18n="project-detail">Project Details</h2>
           <ol>
-            <li><a href="index.html">Home</a></li>
-            <li>Project Details</li>
+            <li><a href="index.html" data-i18n="breadcrumb-home">Home</a></li>
+            <li data-i18n="breadcrumb-detail">Project Details</li>
           </ol>
         </div>
 
@@ -110,10 +110,10 @@
 
           <div class="col-lg-4 d-flex">
             <div class="portfolio-info w-100">
-              <h3>Project information</h3>
+              <h3 data-i18n="project-info">Project information</h3>
               <ul>
-                <li><strong>Category</strong>: Data Analysis</li>
-                <li><strong>Project Year</strong>:2025</li>
+                <li><strong data-i18n="category">Category</strong>: <span data-i18n="pd-hr-cat">Data Analysis</span></li>
+                <li><strong data-i18n="project-year">Project Year</strong>:2025</li>
                 <!-- <li><strong>GitHub</strong>: <a href="https://github.com/4maaz5/ecommerce-app/tree/master" target="_blank" rel="noopener noreferrer">Code</a> - GitHub</li> -->
               </ul>
             </div>
@@ -121,8 +121,9 @@
 
           <div class="col-12">
             <div class="portfolio-description">
-              <h2>Project description</h2>
-              <p>
+              <h2 data-i18n="project-desc">Project description</h2>
+              <h3 data-i18n="pd-hr-title">HR Analysis Report</h3>
+              <p data-i18n="pd-hr-desc">
                 This HR analytics dashboard offers valuable insights into employee demographics, headcount trends, attrition rates, department-wise distribution. Built in Power BI, it enables HR teams to monitor workforce dynamics, identify turnover patterns, and support strategic talent planning with interactive visualizations and filters.
               </p>
             </div>
@@ -141,28 +142,28 @@
       <div class="row footer-info">
         <div class="col-lg-3 col-md-6 footer-item">
           <i class="bi bi-geo-alt"></i>
-          <h4>Location</h4>
+          <h4 data-i18n="footer-location">Location</h4>
           <p>Riyadh, Saudi Arabia</p>
         </div>
         <div class="col-lg-3 col-md-6 footer-item">
           <i class="bi bi-envelope"></i>
-          <h4>Email</h4>
+          <h4 data-i18n="footer-email">Email</h4>
           <p><a href="mailto:saibkhattak054@gmail.com">saibkhattak054@gmail.com</a></p>
         </div>
         <div class="col-lg-3 col-md-6 footer-item">
           <i class="bi bi-phone"></i>
-          <h4>Call</h4>
+          <h4 data-i18n="footer-call">Call</h4>
           <p><a href="tel:+966508823412">+966508823412</a></p>
         </div>
         <div class="col-lg-3 col-md-6 footer-item">
           <i class="bi bi-whatsapp"></i>
-          <h4>WhatsApp</h4>
+          <h4 data-i18n="footer-whatsapp">WhatsApp</h4>
           <p><a href="https://wa.me/966508823412" target="_blank">Chat on WhatsApp</a></p>
         </div>
       </div>
       <hr class="footer-divider">
       <div class="copyright">
-        &copy; Copyright <strong><span>Maaz Ahmad</span></strong>
+        &copy; Copyright <strong><span data-i18n="footer-copyright">Maaz Ahmad</span></strong>
       </div>
     </div>
   </footer><!-- End  Footer -->
@@ -180,6 +181,8 @@
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
+  <!-- Translation File -->
+  <script src="assets/js/lang.js"></script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 

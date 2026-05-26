@@ -199,48 +199,60 @@
   /**
    * Portfolio details slider
    */
-  new Swiper('.portfolio-details-slider', {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    }
-  });
+  let portfolioSlider = null;
+  function initPortfolioSlider() {
+    if (portfolioSlider) portfolioSlider.destroy(true, true);
+    portfolioSlider = new Swiper('.portfolio-details-slider', {
+      speed: 400,
+      loop: true,
+      rtl: document.documentElement.getAttribute('dir') === 'rtl',
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true
+      }
+    });
+  }
+  initPortfolioSlider();
 
   /**
    * Testimonials slider
    */
-  new Swiper('.testimonials-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 20
+  let testimonialsSlider = null;
+  function initTestimonialsSlider() {
+    if (testimonialsSlider) testimonialsSlider.destroy(true, true);
+    testimonialsSlider = new Swiper('.testimonials-slider', {
+      speed: 600,
+      loop: true,
+      rtl: document.documentElement.getAttribute('dir') === 'rtl',
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
       },
+      slidesPerView: 'auto',
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 20
+        },
 
-      1200: {
-        slidesPerView: 3,
-        spaceBetween: 20
+        1200: {
+          slidesPerView: 3,
+          spaceBetween: 20
+        }
       }
-    }
-  });
+    });
+  }
+  initTestimonialsSlider();
 
   /**
    * Animation on scroll
@@ -258,5 +270,65 @@
    * Initiate Pure Counter 
    */
   new PureCounter();
+
+  /**
+   * Language Switcher (EN/AR)
+   */
+  function translatePage(lang) {
+    const elements = document.querySelectorAll('[data-i18n]');
+    elements.forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang] && translations[lang][key]) {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.placeholder = translations[lang][key];
+        } else {
+          el.innerHTML = translations[lang][key];
+        }
+      }
+    });
+  }
+
+  const langLinks = document.querySelectorAll('.lang-switcher a, .mobile-lang a');
+  const html = document.documentElement;
+
+  function switchLang(lang) {
+    if (lang === 'ar') {
+      html.setAttribute('dir', 'rtl');
+      html.setAttribute('lang', 'ar');
+      if (!document.getElementById('rtl-css')) {
+        const link = document.createElement('link');
+        link.id = 'rtl-css';
+        link.rel = 'stylesheet';
+        link.href = 'assets/css/rtl.css';
+        document.head.appendChild(link);
+      }
+    } else {
+      html.setAttribute('dir', 'ltr');
+      html.setAttribute('lang', 'en');
+      const rtlCss = document.getElementById('rtl-css');
+      if (rtlCss) rtlCss.remove();
+    }
+    if (typeof translations !== 'undefined') {
+      translatePage(lang);
+    }
+    langLinks.forEach(el => {
+      el.classList.toggle('lang-active', el.textContent.trim().toLowerCase() === lang);
+    });
+    localStorage.setItem('portfolio-lang', lang);
+    setTimeout(() => {
+      initPortfolioSlider();
+      initTestimonialsSlider();
+    }, 50);
+  }
+
+  langLinks.forEach(el => {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      switchLang(this.textContent.trim().toLowerCase());
+    });
+  });
+
+  const savedLang = localStorage.getItem('portfolio-lang');
+  if (savedLang) switchLang(savedLang);
 
 })()
